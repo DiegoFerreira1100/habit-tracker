@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Login ou Cadastro</title>
+    <style>
+        body { font-family: Arial, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background: #f0f2f5; }
+        .container { width: 320px; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .form { display: none; }
+        .active { display: block; }
+        input { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        button { width: 100%; padding: 10px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        button:hover { background: #0056b3; }
+        .tabs { display: flex; margin-bottom: 20px; }
+        .tab { flex: 1; text-align: center; padding: 10px; cursor: pointer; }
+        .tab.active { font-weight: bold; border-bottom: 2px solid #007bff; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="tabs">
+            <div class="tab active" onclick="showTab('login')">Entrar</div>
+            <div class="tab" onclick="showTab('cadastro')">Cadastrar</div>
+        </div>
+
+        <form id="login" class="form active" onsubmit="login(event)">
+            <input type="text" id="loginNome" placeholder="Nome" required />
+            <input type="password" id="loginSenha" placeholder="Senha" required />
+            <button type="submit">Entrar</button>
+        </form>
+
+        <form id="cadastro" class="form" onsubmit="cadastrar(event)">
+            <input type="text" id="cadastroNome" placeholder="Nome" required />
+            <input type="password" id="cadastroSenha" placeholder="Senha" required />
+            <button type="submit">Cadastrar</button>
+        </form>
+    </div>
+
+   <script src="index.js"></script>
+</body>
+</html>   

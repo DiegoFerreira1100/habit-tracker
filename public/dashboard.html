@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Dashboard de Hábitos</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background: #f0f2f5; }
+        .header { display: flex; justify-content: space-between; margin-bottom: 20px; }
+        .habito { display: flex; justify-content: space-between; align-items: center; background: white; padding: 15px; margin-bottom: 10px; border-radius: 8px; box-shadow: 0 1px 5px rgba(0,0,0,0.1); }
+        button { padding: 8px 12px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        button.sair { background: #dc3545; }
+        button.novo-dia { background: #28a745; }
+        button.cumpri { background: #ffc107; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Meus Hábitos</h1>
+        <button onclick="adicionarHabito()">Adicionar hábito</button>
+        <div class="perfil">
+    <div>Nível <span id="nivelUsuario">1</span></div>
+    <div class="xp-bar">
+        <div id="xpProgresso" class="xp-fill"></div>
+    </div>
+    <div>XP: <span id="xpAtual">0</span> / <span id="xpNecessario">100</span></div>
+</div>
+    </div>
+
+    <div id="listaHabitos"></div>
+
+    <div style="margin-top: 20px; text-align: center;">
+        <button class="novo-dia" onclick="novoDia()">Novo dia</button>
+        <button class="sair" onclick="sair()">Sair</button>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>   
