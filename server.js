@@ -5,18 +5,22 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const SECRET_KEY = 'sua-chave-secreta-aqui';
 
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 
 const servidor = express();
 servidor.use(express.json());
+// Alterar esta linha:
 servidor.use(express.static('public'));
 
-
-//funções
+// Garantir que os arquivos JSON sejam criados se não existirem
 function lerUsuarios() {
-    const dados = fs.readFileSync('./dados/usuarios.json', 'utf8');
-    return JSON.parse(dados);
+    try {
+        const dados = fs.readFileSync('./dados/usuarios.json', 'utf8');
+        return JSON.parse(dados);
+    } catch (error) {
+        return [];
+    }
 }
 
 function salvarUsuarios(usuarios) {
@@ -24,8 +28,12 @@ function salvarUsuarios(usuarios) {
 }
 
 function lerHabitos() {
-    const habitos = fs.readFileSync('./dados/habitos.json','utf8');
-    return JSON.parse(habitos);
+    try {
+        const dados = fs.readFileSync('./dados/habitos.json', 'utf8');
+        return JSON.parse(dados);
+    } catch (error) {
+        return [];
+    }
 }
 
 function salvarHabitos(habitos) {
@@ -38,7 +46,7 @@ function calcularNivel(xp) {
     
     while (xp >= xpNecessario) {
         nivel++;
-        xpNecessario = 100 + (nivel * 50);
+        xpNecessario = 100 + ((nivel - 1) * 50);
     }
     return nivel;
 }
